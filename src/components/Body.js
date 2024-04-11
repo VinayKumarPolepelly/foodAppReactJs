@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Body = () => {
   // Local State variable - super powerful variable
   //whenever state variable updates react will re-renders the components
-
+  //second push
   const [ListOfRes, setListOfRes] = useState([]);
   const [searchText, setSearchText] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
