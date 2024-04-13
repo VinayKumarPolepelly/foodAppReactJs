@@ -4,8 +4,8 @@ import { MdStarRate } from "react-icons/md";
 const RestaurantCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, areaName } =
-    resData?.info;
-  const { deliveryTime } = resData.info.sla;
+    resData?.info || {};
+  const { deliveryTime } = resData?.info?.sla || {};
   return (
     <div className="m-2 p-4 w-[250px] h-[380px] bg-gray-100 rounded-xl hover:bg-gray-200 hover:shadow-lg">
       <img
@@ -29,4 +29,20 @@ const RestaurantCard = (props) => {
   );
 };
 
+//higher order component
+
+//input - RestaurantCard  , returns - RestaurantPromotedCard
+
+export const withPromoted = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className=" bg-black text-white p-1  rounded-r-lg rounded-b-lg absolute ">
+          veg
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
 export default RestaurantCard;

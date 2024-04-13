@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromoted } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import Offline from "./Offline.js";
@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 const Body = () => {
   // Local State variable - super powerful variable
   //whenever state variable updates react will re-renders the components
-  //second push
   const [ListOfRes, setListOfRes] = useState([]);
   const [searchText, setSearchText] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const Promotedcard = withPromoted(RestaurantCard);
   useEffect(() => {
     fetchData();
   }, []);
@@ -75,12 +75,16 @@ const Body = () => {
       </div>
 
       <div className="flex flex-wrap">
-        {filteredRestaurant.map((restautant) => (
+        {filteredRestaurant.map((restaurant) => (
           <Link
-            to={"/restaurants/" + restautant.info.id}
-            key={restautant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+            key={restaurant.info.id}
           >
-            <RestaurantCard resData={restautant} />
+            {restaurant.info.veg ? (
+              <Promotedcard resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
