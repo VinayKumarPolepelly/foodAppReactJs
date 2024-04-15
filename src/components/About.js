@@ -6,7 +6,7 @@ import React from "react";
 const About = () => {
   return (
     <div>
-      <h1>About page</h1>
+      <h1>About Page Food</h1>
       <User name="Vinay" location="Nizamabad (function)" />
       <UserClass name="Cho2" location="Uploor (class)" />
     </div>
