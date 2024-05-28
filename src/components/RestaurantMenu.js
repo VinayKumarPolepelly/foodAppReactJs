@@ -1,9 +1,11 @@
 import Shimmer from "./Shimmer";
 import { MdStarRate } from "react-icons/md";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu"; //custom hook
 import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
+  const [showIndex, setShowIndex] = useState(0);
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
   const { name, cuisines, costForTwoMessage, avgRatingString } =
@@ -14,7 +16,6 @@ const RestaurantMenu = () => {
   //     resInfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
   /**    ?.itemCards) ||*/
   //   [];
-
   const categories =
     resInfo.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
       (c) =>
@@ -44,8 +45,14 @@ const RestaurantMenu = () => {
       <h2 className="text-2xl font-bold my-2">Menu</h2>
       <div>
         <div>
-          {categories.map((c) => (
-            <RestaurantCategory key={c.card.card.title} data={c.card.card} />
+          {categories.map((c, index) => (
+            //controlled component
+            <RestaurantCategory
+              key={c?.card?.card.title}
+              data={c?.card?.card}
+              showItem={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
+            />
           ))}
         </div>
       </div>
