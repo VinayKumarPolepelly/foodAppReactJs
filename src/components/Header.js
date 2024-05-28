@@ -25,13 +25,13 @@ const Header = () => {
           <li className="px-4  hover:text-red-500 active:text-red-800">
             <Link to="/about">About Us</Link>
           </li>
-          <li className="px-4  hover:text-red-500 active:text-red-800">
+          <li className="px-4  hover:text-red-500 active:text-red-800 hidden sm:block">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="px-4  hover:text-red-500 active:text-red-800">
+          <li className="px-4  hover:text-red-500 active:text-red-800 hidden sm:block">
             <Link to="/cart">Cart</Link>
           </li>
-          <li className="px-4  hover:text-red-500 active:text-red-800">
+          <li className="px-4  hover:text-red-500 active:text-red-800 hidden sm:block">
             <Link to="/grocery">Grocery</Link>
           </li>
           <button
