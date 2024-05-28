@@ -9,8 +9,8 @@ const RestaurantCategory = (props) => {
   // console.log(showItem);
   return (
     <div className="w-8/12 m-auto">
-      <div className="bg-gray-100 rounded-md mt-3 shadow-lg p-4 font-bold  hover:bg-gray-200 active:bg-gray-300">
-        <div className="flex justify-between   " onClick={handleClick}>
+      <div className="bg-gray-100 rounded-md mt-3 shadow-lg p-4 font-bold  hover:bg-gray-200 active:bg-gray-300" onClick={handleClick}>
+        <div className="flex justify-between   " >
           <span>
             {data.title} ({data.itemCards.length})
           </span>
