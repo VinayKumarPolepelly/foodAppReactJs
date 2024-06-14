@@ -6488,5 +6488,3 @@ export const swiggyData = {
     nextFetch: 1,
   },
 };
-
-export const menu = {};
