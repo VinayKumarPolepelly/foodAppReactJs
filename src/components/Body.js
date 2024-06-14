@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 import Offline from "./Offline.js";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { Link } from "react-router-dom";
+import { swiggyData } from "../utils/constants.js";
 const Body = () => {
   // Local State variable - super powerful variable
   //whenever state variable updates react will re-renders the components
@@ -14,19 +15,21 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  //tofetch directly from swiggy
+  //
+  //   const data = await fetch(
+  //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.37240&lng=78.43780&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  //   );
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.37240&lng=78.43780&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
-    const json = await data.json();
-    //console.log(json);
+  //   const json = await data.json();
+  const fetchData = () => {
+    const json = swiggyData;
+    console.log(json);
     setListOfRes(
-      json.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
   const onlineStatus = useOnlineStatus();
