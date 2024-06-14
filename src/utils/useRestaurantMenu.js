@@ -14,6 +14,7 @@ const useRestaurantMenu = (resId) => {
         "&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER"
     );
     const json = await data.json();
+    console.log(json);
     setResInfo(json.data);
   };
   return resInfo;
